@@ -1,0 +1,35 @@
+name: Terraform Apply on Merge
+
+on:
+  push:
+    branches:
+      - Kishore-GCP
+    paths:
+      - 'dev/**/*.tf'
+      - 'staging/**/*.tf'
+      - 'prod/**/*.tf'
+
+jobs:
+  terraform-apply:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        environment: [dev, staging, prod]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.7
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: ${{ matrix.environment }}
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        working-directory: ${{ matrix.environment }}
