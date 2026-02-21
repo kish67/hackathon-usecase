@@ -5,9 +5,9 @@ on:
     branches:
       - Kishore-GCP
     paths:
-      - 'dev/**/*.tf'
-      - 'staging/**/*.tf'
-      - 'prod/**/*.tf'
+      - 'envs/dev/**/*.tf'
+      - 'envs/staging/**/*.tf'
+      - 'envs/prod/**/*.tf'
 
 jobs:
   terraform-apply:
