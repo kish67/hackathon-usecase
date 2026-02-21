@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy your application file
 COPY application-service/src/index.js .
-
+RUN npm install express
 # Expose port (adjust if your app listens on another port)
 EXPOSE 3000
 
