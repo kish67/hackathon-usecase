@@ -6,21 +6,38 @@ resource "google_monitoring_dashboard" "prod_dashboard" {
     "columns": 2,
     "widgets": [
       {
-        "title": "CPU Usage",
+        "title": "Application Frontend CPU Usage (Prod)",
         "xyChart": {
           "dataSets": [
             {
               "timeSeriesQuery": {
                 "timeSeriesFilter": {
-                  "filter": "metric.type=\"compute.googleapis.com/instance/cpu/utilization\""
+                  "filter": "metric.type=\"kubernetes.io/container/cpu/utilization\" AND resource.type=\"k8s_container\" AND resource.label.\"container_name\"=\"applicationfrontend\" AND resource.label.\"cluster_name\"=\"prod-gke-cluster\""
                 }
               }
             }
           ]
         }
-      }
-    ]
-  }
-}
-EOT
-}
+      },
+      {
+        "title": "Patient Frontend CPU Usage (Prod)",
+        "xyChart": {
+          "dataSets": [
+            {
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "metric.type=\"kubernetes.io/container/cpu/utilization\" AND resource.type=\"k8s_container\" AND resource.label.\"container_name\"=\"patientfrontend\" AND resource.label.\"cluster_name\"=\"prod-gke-cluster\""
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "Order Backend CPU Usage (Prod)",
+        "xyChart": {
+          "dataSets": [
+            {
+              "timeSeriesQuery": {
+                "timeSeriesFilter": {
+                  "filter": "metric.type=\"kubernetes.io/container/cpu/utilization\" AND resource.type=\"k8s_container\" AND resource.label.\"
