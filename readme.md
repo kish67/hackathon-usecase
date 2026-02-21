@@ -52,3 +52,7 @@ Create workflows for:
 2. Terraform fmt and validate on all PRs
 3. Terraform plan on pull requests
 4. Terraform apply on merges to main branch
+
+
+ARCHITECTURE_DIAGRAM:
+![Architecture_diagram](https://github.com/user-attachments/assets/0586482d-d3ad-4512-84c4-9562e5a17455)
