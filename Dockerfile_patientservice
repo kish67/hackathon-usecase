@@ -8,7 +8,7 @@ WORKDIR /app
 COPY patient-service/src/index.js .
 
 # Expose port (adjust if your app listens on another port)
-EXPOSE 3001
+EXPOSE 3000
 
 # Run the application
 CMD ["node", "index.js"]
