@@ -55,4 +55,5 @@ Create workflows for:
 
 
 ARCHITECTURE_DIAGRAM:
+
 ![Architecture_diagram](https://github.com/user-attachments/assets/0586482d-d3ad-4512-84c4-9562e5a17455)
