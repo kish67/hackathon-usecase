@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: applicationservice
+  labels:
+    app: applicationservice
+spec:
+  type: ClusterIP
+  selector:
+    app: applicationservice
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3001

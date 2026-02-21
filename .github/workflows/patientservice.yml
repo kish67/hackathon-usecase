@@ -1,0 +1,31 @@
+name: Build and Push Docker Patient Image
+
+on:
+  push:
+    branches:
+      - Kishore-GCP   # run only when pushing to this branch
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          repository: kish67/hackathon-usecase
+          ref: Kishore-GCP
+
+      # Step 3: Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t patientfrontend:latest -f Dockerfile_patientservice .
+
+      - name: Run Docker container
+        run: |
+          docker run -d -p 3000:3000 --name PatientService patientfrontend:latest
+          
+      - name: Push Docker image 
+        run: | 
+          docker push gcr.io/${{ matrix.env }}-repo/patientfrontend:latest

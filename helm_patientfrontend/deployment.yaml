@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patientservice-deployment
+  labels:
+    app: patientservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: patientservice
+  template:
+    metadata:
+      labels:
+        app: patientservice
+    spec:
+      containers:
+        - name: patientservice
+          image: patientfrontendimage:1.1
+          ports:
+            - containerPort: 3000

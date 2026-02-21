@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: applicationservice-deployment
+  labels:
+    app: applicationservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: applicationservice
+  template:
+    metadata:
+      labels:
+        app: applicationservice
+    spec:
+      containers:
+        - name: applicationservice
+          image: applicationfrontendimage:1.2
+          ports:
+            - containerPort: 3001

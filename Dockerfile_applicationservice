@@ -1,0 +1,14 @@
+# Use Node.js base image
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy your application file
+COPY application-service/src/index.js .
+RUN npm install express
+# Expose port (adjust if your app listens on another port)
+EXPOSE 3001
+
+# Run the application
+CMD ["node", "index.js"]
